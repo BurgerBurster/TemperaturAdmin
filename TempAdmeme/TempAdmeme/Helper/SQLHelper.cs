@@ -46,5 +46,61 @@ namespace TempAdmeme.Helper
                 return new List<User>();
             }
         }
+
+        public bool insertUser(User user)
+        {
+            try
+            {
+                List<User> users = new List<User>();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string SQL = $"INSERT INTO benutzer (name, anmeldename, telefonnr) VALUES ('{user.Name}','{user.LoginName}','{user.Phone}')";
+
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = SQL;
+
+                    if(cmd.ExecuteNonQuery() <= 0)
+                    {
+                        VarContainer.logger.Error($"{MethodBase.GetCurrentMethod().Name}: Datensatz zu {user.Name} konnte nicht eingefügt werden!");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                VarContainer.logger.Error($"{MethodBase.GetCurrentMethod().Name}: {ex.Message} {ex.StackTrace}");
+                return false;
+            }
+        }
+
+        public bool removeUser(int ID)
+        {
+            try
+            {
+                List<User> users = new List<User>();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string SQL = $"DELETE FROM benutzer WHERE benutzerNr = '{ID}'";
+
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = SQL;
+
+                    if(cmd.ExecuteNonQuery() <= 0)
+                    {
+                        VarContainer.logger.Error($"{MethodBase.GetCurrentMethod().Name}: Datensatz zu ID {ID} konnte nicht eingefügt werden!");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                VarContainer.logger.Error($"{MethodBase.GetCurrentMethod().Name}: {ex.Message} {ex.StackTrace}");
+                return false;
+            }
+        }
     }
 }

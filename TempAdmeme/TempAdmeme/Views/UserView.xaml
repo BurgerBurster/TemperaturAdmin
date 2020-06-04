@@ -6,29 +6,57 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:grid="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:TempAdmeme.Views"
+    Title="Nutzer"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid>
-            <grid:DataGrid x:Name="grid">
-                <grid:DataGrid.HeaderFontSize>
-                    <OnIdiom  x:TypeArguments="x:Double">
-                        <OnIdiom.Tablet>15</OnIdiom.Tablet>
-                        <OnIdiom.Phone>13</OnIdiom.Phone>
-                    </OnIdiom>
-                </grid:DataGrid.HeaderFontSize>
-                <grid:DataGrid.Columns>
-                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Nr." />
-                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Name" />
-                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Anmeldename" />
-                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Telefon" />
-                </grid:DataGrid.Columns>
-                <grid:DataGrid.RowsBackgroundColorPalette>
-                    <grid:PaletteCollection>
-                        <Color>#F2F2F2</Color>
-                        <Color>#FFFFFF</Color>
-                    </grid:PaletteCollection>
-                </grid:DataGrid.RowsBackgroundColorPalette>
-            </grid:DataGrid>
+            <AbsoluteLayout>
+                <grid:DataGrid
+                    x:Name="grid"
+                    BackgroundColor="White"
+                    ItemSelected="grid_ItemSelected"
+                    ItemsSource="{Binding users}">
+                    <grid:DataGrid.HeaderFontSize>
+                        <OnIdiom x:TypeArguments="x:Double">
+                            <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                            <OnIdiom.Phone>13</OnIdiom.Phone>
+                        </OnIdiom>
+                    </grid:DataGrid.HeaderFontSize>
+                    <grid:DataGrid.Columns>
+                        <grid:DataGridColumn
+                            Title="Nr."
+                            Width="50"
+                            PropertyName="ID" />
+                        <grid:DataGridColumn
+                            Title="Name"
+                            Width="*"
+                            PropertyName="Name" />
+                        <grid:DataGridColumn
+                            Title="Anmeldename"
+                            Width="2*"
+                            PropertyName="LoginName" />
+                        <grid:DataGridColumn
+                            Title="Telefon"
+                            Width="2*"
+                            PropertyName="Phone" />
+                    </grid:DataGrid.Columns>
+                    <grid:DataGrid.RowsBackgroundColorPalette>
+                        <grid:PaletteCollection>
+                            <Color>#F2F2F2</Color>
+                            <Color>#FFFFFF</Color>
+                        </grid:PaletteCollection>
+                    </grid:DataGrid.RowsBackgroundColorPalette>
+                </grid:DataGrid>
+                <ImageButton
+                    AbsoluteLayout.LayoutBounds=".95,.95,60,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    BackgroundColor="Transparent"
+                    Clicked="Fab_Clicked"
+                    Scale="1"
+                    Source="FAB.png" />
+            </AbsoluteLayout>
+            <views:AddUserView x:Name="addUserView" IsVisible="false" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
