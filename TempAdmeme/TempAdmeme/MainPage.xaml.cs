@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NLog;
+using NLog.Config;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -22,6 +24,9 @@ namespace TempAdmeme
             {
                 IsPresented = false;
             });
+
+            LogManager.Configuration = new XmlLoggingConfiguration(Device.RuntimePlatform == Device.Android ? "assets/NLog.config" : "NLog.config");
+            VarContainer.logger = LogManager.GetLogger("TempAdmin");
         }
 
         public void pushToDetail(Page page)

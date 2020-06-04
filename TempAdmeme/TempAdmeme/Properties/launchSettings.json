@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TempAdmeme": {
+      "commandName": "Project",
+      "sqlDebugging": false
+    }
+  }
+}

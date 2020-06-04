@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TempAdmeme.Views;
@@ -11,5 +12,9 @@ namespace TempAdmeme.Helper
         public static UserView userView = null;
         public static LogView logView = null;
         public static MainPage main = null;
+
+        public static Logger logger = null;
+
+        public static SQLHelper sql = new SQLHelper();
     }
 }
