@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TempAdmeme.Views.UserView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:grid="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid>
+            <grid:DataGrid x:Name="grid">
+                <grid:DataGrid.HeaderFontSize>
+                    <OnIdiom  x:TypeArguments="x:Double">
+                        <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                        <OnIdiom.Phone>13</OnIdiom.Phone>
+                    </OnIdiom>
+                </grid:DataGrid.HeaderFontSize>
+                <grid:DataGrid.Columns>
+                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Nr." />
+                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Name" />
+                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Anmeldename" />
+                    <grid:DataGridColumn Width="AUTO" FormattedTitle="Telefon" />
+                </grid:DataGrid.Columns>
+                <grid:DataGrid.RowsBackgroundColorPalette>
+                    <grid:PaletteCollection>
+                        <Color>#F2F2F2</Color>
+                        <Color>#FFFFFF</Color>
+                    </grid:PaletteCollection>
+                </grid:DataGrid.RowsBackgroundColorPalette>
+            </grid:DataGrid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
